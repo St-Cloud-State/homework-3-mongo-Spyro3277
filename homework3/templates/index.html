@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Homework 3</title>
+</head>
+
+<body>
+
+    <div id="addApplication">
+        <h1>Accept Application</h1>
+        <input type="text" id="appName" placeholder="Name for application">
+        <input type="text" id="address" placeholder="Address for application">
+        <input type="text" id="zipCode" placeholder="Enter zipcode">
+        <button onclick="addApp()">Submit</button>
+    </div>
+
+        <div id="appList"> 
+            <!--App data will be displayed here-->
+        </div>
+
+
+    <div id="checkTheStatus">
+        <h1>Check Status</h1>
+        <input type="text" id="checkStatus" placeholder="Enter app. Number">
+        <button onclick="displayStatus()">Enter</button>
+    </div>
+
+        <div id="showStatus">
+            <!--The status of an application will be shown here-->
+        </div>
+
+        <div id="statusFailed">
+
+        </div>
+
+    <div id="changeStatus">
+        <h1>Change Status</h1>
+        <label for="appNumToUpdate">Enter an application number to update:</label><br>
+        <input type="text" id="appNumToUpdate" placeholder="Enter number"><br>
+        <!--input type="text" id="newStatus" placeholder="Please enter the new status"-->
+
+        <label for="newStatus">Choose a new status and add a note:</label><br>
+        <select name="newStatus" id="newStatus">
+            <option value="" disabled selected>Select the status</option>
+            <option value="Not Found">Not Found</option>
+            <option value="Received" >Received</option>
+            <option value="Processing" >Processing</option>
+            <option value="Accepted">Accepted</option>
+            <option value="Rejected">Rejected</option>
+        </select>
+
+        <input type="text" id="statusNote" placeholder="Add a note"><br>
+
+        <button onclick="updateStatus()">Update</button>
+    </div>
+        <div id="showNewStatus">
+            <!--The new status will be displayed here-->
+        </div>
+
+        <div id="cantShowNewStatus">
+            
+        </div>
+    
+
+        <script src="/static/script.js" defer></script>
+</body>
+</html>
