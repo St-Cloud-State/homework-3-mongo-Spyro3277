@@ -5,12 +5,16 @@ function addApp(){
     const appName = document.getElementById('appName').value;
     const zipCode = document.getElementById('zipCode').value;
     const address = document.getElementById('address').value;
+    const creditScore = document.getElementById('creditScore').value;
+    const income = document.getElementById('annualIncome').value;
    
 
     const appData ={
         name: appName,
         zip: zipCode,
         addressOfPerson: address,
+        credit_score: creditScore,
+        annualIncome: income,
             
     };
 
@@ -43,7 +47,7 @@ function addApp(){
 
 }
 
-//Shows an application
+/* //Shows an application
 function displayAnApplication(){
     const appList = document.getElementById('appList');
     appList.innerHTML = '';
@@ -61,8 +65,34 @@ function displayAnApplication(){
 
     });
 
-}
+} */
 
+//Processes an application
+function processApplication(){
+    const appToProcess = document.getElementById("idToProcess").value;
+
+    fetch(`/api/processApplication/${appToProcess}`)
+    .then(response =>{
+        if (!response.ok) {
+            throw new Error("Application not found");
+        }
+        return response.json();
+    })
+    .then(data =>{
+        console.log(data);
+        alert(`Credit result: ${data.creditMessage}`);
+        alert(`Income check: ${data.incomeMessage}`);
+
+
+
+
+    })
+    .catch(error =>{
+        console.error('Error processing application:', error);
+        alert("Error processing application.");
+
+    });
+}
 
 
 //Displays the status of an application
@@ -81,12 +111,13 @@ function displayStatus(){
             console.log(data);
 
             const showStatus = document.getElementById('showStatus');
+            
             showStatus.innerHTML = `
             <p>
             Application number ${numToCheck} status: ${data.status} <br>
             Notes: <br>
-            ${data.note}
-            
+            ${Array.isArray(data.notes) ? data.notes.map(note => `Subphase: ${note.subphase} - Note: ${note.note}`).join("<br>") : "No notes"}
+
             </p>
             
             `;
@@ -106,6 +137,7 @@ function updateStatus(){
     const appToChange = document.getElementById('appNumToUpdate').value;
     const newStatusValue = document.getElementById('newStatus').value;
     const newNote = document.getElementById('statusNote').value;
+    const subPhase = document.getElementById('subPhase').value;
 
     fetch('/api/update_status',{
         method: 'POST',
@@ -116,6 +148,7 @@ function updateStatus(){
         body: JSON.stringify({
             application_id: appToChange,
             new_status: newStatusValue,
+            subphase: subPhase,
             note: newNote
         })
     })

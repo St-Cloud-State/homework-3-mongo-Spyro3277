@@ -3,15 +3,20 @@
 
 <head>
     <title>Homework 3</title>
+
+
 </head>
 
 <body>
 
     <div id="addApplication">
-        <h1>Accept Application</h1>
+        <h1>Enter Application</h1>
         <input type="text" id="appName" placeholder="Name for application">
         <input type="text" id="address" placeholder="Address for application">
-        <input type="text" id="zipCode" placeholder="Enter zipcode">
+        <input type="text" id="zipCode" placeholder="Enter zipcode"><br>
+        <input type="number" id="creditScore" placeholder="Enter credit score">
+        <input type="number" id="annualIncome" placeholder="Enter income">
+
         <button onclick="addApp()">Submit</button>
     </div>
 
@@ -19,9 +24,15 @@
             <!--App data will be displayed here-->
         </div>
 
+    <div id="processApplication">
+        <h1>Process an Application</h1>
+        <label for="idToProcess">Enter ID:</label><br>
+        <input type="text" id="idToProcess" placeholder="Enter ID">
+        <button onclick="processApplication()">Process</button>
+    </div>
 
     <div id="checkTheStatus">
-        <h1>Check Status</h1>
+        <h1>Check Status and Display Notes</h1>
         <input type="text" id="checkStatus" placeholder="Enter app. Number">
         <button onclick="displayStatus()">Enter</button>
     </div>
@@ -35,7 +46,7 @@
         </div>
 
     <div id="changeStatus">
-        <h1>Change Status</h1>
+        <h1>Change Status and Add Note</h1>
         <label for="appNumToUpdate">Enter an application number to update:</label><br>
         <input type="text" id="appNumToUpdate" placeholder="Enter number"><br>
         <!--input type="text" id="newStatus" placeholder="Please enter the new status"-->
@@ -49,6 +60,8 @@
             <option value="Accepted">Accepted</option>
             <option value="Rejected">Rejected</option>
         </select>
+
+        <input type="text" id="subPhase" placeholder="Add a Subphase"><br>
 
         <input type="text" id="statusNote" placeholder="Add a note"><br>
 
